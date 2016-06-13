@@ -27,5 +27,4 @@
     <name>http.content.limit</name>
     <value>6553600</value>
   </property>
-  <property>
 </configuration>
