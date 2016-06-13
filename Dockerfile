@@ -2,7 +2,7 @@
 #
 # VERSION 20160613_1
 
-FROM cogfor/hbase:latest
+FROM cogfor/hbase:0.94
 
 MAINTAINER Rene Nederhand <rene@cogfor.com>
 
