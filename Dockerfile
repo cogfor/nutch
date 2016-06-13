@@ -19,7 +19,7 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 # Install various dependencies
-RUN apt-get update && apt-get install -y ant git curl build-essential 
+RUN apt-get update && apt-get install -y ant git curl build-essential vim 
 
 # Set up JAVA_HOME
 #RUN echo 'export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")' >> $HOME/.bashrc
@@ -36,6 +36,9 @@ ADD conf/hbase-site.xml /nutch_source/conf
 ADD conf/gora.properties /nutch_source/conf
 ## Set spider and configure storage
 ADD conf/nutch-site.xml /nutch_source/conf
+## Build gora-hbase dependency
+RUN vim -c 'g/name="gora-hbase"/+1d' -c 'x' ivy/ivy.xml
+RUN vim -c 'g/name="gora-hbase"/-1d' -c 'x' ivy/ivy.xml
 
 # Build Nutch
 RUN ant
