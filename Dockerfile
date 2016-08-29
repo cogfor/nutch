@@ -2,7 +2,7 @@
 #
 # VERSION 20160613_1
 
-FROM cogfor/hbase:0.94
+FROM cogfor/hbase:0.98-hadoop2
 
 MAINTAINER Rene Nederhand <rene@cogfor.com>
 
@@ -40,7 +40,7 @@ ADD conf/nutch-site.xml /nutch_source/conf
 RUN vim -c 'g/name="gora-hbase"/+1d' -c 'x' ivy/ivy.xml
 RUN vim -c 'g/name="gora-hbase"/-1d' -c 'x' ivy/ivy.xml
 ## to solve a missing library issue:
-RUN cp /opt/hbase-0.94.27/hbase-0.94.27.jar /nutch_source/runtime/local/lib/
+#RUN  find /opt -name "hbase*jar" -print && cp /opt/hbase/lib/ && cp /opt/hbase/hbase-*.jar /nutch_source/runtime/local/lib/
 
 # Build Nutch
 RUN ant
