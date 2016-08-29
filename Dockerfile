@@ -39,8 +39,6 @@ ADD conf/nutch-site.xml /nutch_source/conf
 ## Build gora-hbase dependency
 RUN vim -c 'g/name="gora-hbase"/+1d' -c 'x' ivy/ivy.xml
 RUN vim -c 'g/name="gora-hbase"/-1d' -c 'x' ivy/ivy.xml
-## to solve a missing library issue:
-#RUN  find /opt -name "hbase*jar" -print && cp /opt/hbase/lib/ && cp /opt/hbase/hbase-*.jar /nutch_source/runtime/local/lib/
 
 # Build Nutch
 RUN ant
